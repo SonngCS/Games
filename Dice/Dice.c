@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-int roll(int, int);
+void roll(int, int);
+
 int main(){
     int n, m, sum;
     char num;
@@ -10,27 +11,22 @@ int main(){
         printf("#######################################\n");
         printf("#              DICE ROLL              #\n");
         printf("#######################################\n");
-        printf("Type the number of sides of the dice and the amout of times to repeat the roll (As in 2d8, for 2 8-sided dices): ");
+        printf("Hello, adventurer! It's time to roll the dice! (you may roll by typing the number of rolls, 'd', and the type of die, as in '2d8')\n");
 
-        scanf("%dd%d", &n, &m); 
+        scanf("%dd%d", &m, &n); 
         printf("Chosen dice: d%d\nNumber of rolls: %d\n", n, m);
 
-        sum = roll(n, m);
+        roll(n, m);
         
-        printf("\nDo you want to do another roll? (Y/N): ");
+        printf("\nDo you want to roll again? (Y or y for 'yes' or any key to end the program): ");
         scanf(" %c", &num);
 
-        while(num != 'N' && num != 'Y'){
-            printf("Couldn't recognize the choice, type Y or N: ");
-            scanf(" %c", &num);
-        }
-
-    }while(num != 'N');
+    }while(num = 'Y' && num != 'y');
 
     return 0;
 }
 
-int roll(int sides,int times){
+void roll(int sides,int times){
     srand(time(NULL));
     int dice, sum;
     sum = 0;
@@ -40,5 +36,5 @@ int roll(int sides,int times){
         sum += dice;
         printf("%d ", dice);
     }
-    printf("\n");
+    printf("\nSum: %d\n", sum);
 }
