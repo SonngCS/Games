@@ -2,20 +2,20 @@
 #include <stdlib.h>
 #include <time.h>
 
-void roll(int, int);
+int roll(int, int);
 int main(){
-    int n, m;
+    int n, m, sum;
     char num;
     do{
         printf("#######################################\n");
         printf("#              DICE ROLL              #\n");
         printf("#######################################\n");
-        printf("Type the number of sides of the dice and the amout of times to repeat the roll (one space between the two numbers): ");
+        printf("Type the number of sides of the dice and the amout of times to repeat the roll (As in 2d8, for 2 8-sided dices): ");
 
-        scanf("%d %d", &n, &m); 
+        scanf("%dd%d", &n, &m); 
         printf("Chosen dice: d%d\nNumber of rolls: %d\n", n, m);
 
-        roll(n, m);
+        sum = roll(n, m);
         
         printf("\nDo you want to do another roll? (Y/N): ");
         scanf(" %c", &num);
@@ -30,12 +30,14 @@ int main(){
     return 0;
 }
 
-void roll(int sides,int times){
+int roll(int sides,int times){
     srand(time(NULL));
-    int dice;
+    int dice, sum;
+    sum = 0;
     printf("Your roll(s): ");
     for(int i = 0; i < times; i++){
         dice = (rand() % (sides)) + 1;
+        sum += dice;
         printf("%d ", dice);
     }
     printf("\n");
