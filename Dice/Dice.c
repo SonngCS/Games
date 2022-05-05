@@ -7,12 +7,13 @@ void roll(int, int);
 int main(){
     int n, m, sum;
     char num;
-    do{
-        printf("#######################################\n");
-        printf("#              DICE ROLL              #\n");
-        printf("#######################################\n");
-        printf("Hello, adventurer! It's time to roll the dice! (you may roll by typing the number of rolls, 'd', and the type of die, as in '2d8')\n");
 
+    printf("#######################################\n");
+    printf("#              DICE ROLL              #\n");
+    printf("#######################################\n");
+    printf("Hello, adventurer! It's time to roll the dice! (you may roll by typing the number of rolls, 'd', and the type of die, as in '2d8')\n");
+    
+    do{
         scanf("%dd%d", &m, &n); 
         printf("Chosen dice: d%d\nNumber of rolls: %d\n", n, m);
 
@@ -21,7 +22,7 @@ int main(){
         printf("\nDo you want to roll again? (Y or y for 'yes' or any key to end the program): ");
         scanf(" %c", &num);
 
-    }while(num = 'Y' && num != 'y');
+    }while(num == 'Y' || num == 'y');
 
     return 0;
 }
